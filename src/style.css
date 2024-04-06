@@ -12,3 +12,7 @@ body {
   margin: 0;
   font-size: 18px;
 }
+
+.card {
+  background: linear-gradient(to left top, #069140bd, #08c751da 70%);
+}

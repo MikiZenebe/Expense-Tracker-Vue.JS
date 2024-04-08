@@ -1,4 +1,17 @@
-<script setup></script>
+<script setup>
+import { defineProps } from "vue";
+
+const props = defineProps({
+  income: {
+    type: Number,
+    required: true,
+  },
+  expense: {
+    type: Number,
+    required: true,
+  },
+});
+</script>
 
 <template>
   <div
@@ -6,13 +19,13 @@
   >
     <div>
       <h4 class="font-semibold">Income</h4>
-      <p class="text-green-400">+$0.00</p>
+      <p class="text-green-400">+${{ income }}</p>
     </div>
 
     <div class="w-[2px] bg-gray-400 h-10"></div>
     <div>
       <h4 class="font-semibold">Expense</h4>
-      <p class="text-red-400">-$0.00</p>
+      <p class="text-red-400">${{ expense }}</p>
     </div>
   </div>
 </template>

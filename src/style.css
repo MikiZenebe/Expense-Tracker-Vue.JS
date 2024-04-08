@@ -17,3 +17,13 @@ body {
 .card {
   background-color: white;
 }
+
+.minus {
+  border-left-width: 4px;
+  border-color: red;
+}
+
+.plus {
+  border-left-width: 4px;
+  border-color: #23c223;
+}

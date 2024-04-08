@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="flex items-center justify-between w-[250px] px-6 py-2 rounded-md bg-slate-200"
+    class="flex items-center justify-between w-[250px] px-6 py-2 rounded-md border border-gray-300"
   >
     <div>
       <h4 class="font-semibold">Income</h4>

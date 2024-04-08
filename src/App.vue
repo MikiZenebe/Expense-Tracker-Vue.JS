@@ -46,7 +46,7 @@ const expense = computed(() => {
   <div class="flex flex-col gap-2 card p-12 rounded-lg shadow-2xl h-auto">
     <Header />
     <Balance :total="total" />
-    <IncomeExpenses :income="income" :expense="expense" />
+    <IncomeExpenses :income="+income" :expense="+expense" />
     <TransactionList :transactions="transactions" />
     <AddTransaction />
   </div>

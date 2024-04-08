@@ -1,16 +1,26 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+
+const text = ref("");
+const amount = ref("");
+
+const onSubmit = () => {
+  console.log(text.value, amount.value);
+};
+</script>
 
 <template>
   <div class="flex flex-col gap-2">
     <h3 class="text-md font-semibold text-slate-500 pt-3 border-b-2">
       Add Transaction
     </h3>
-    <div class="flex flex-col gap-1">
+    <form class="flex flex-col gap-1" @submit.prevent="onSubmit">
       <div>
         <input
           class="w-full transition-all duration-[300ms] ease-out rounded-md appearance-none border border-gray-300 py-0.5 px-2 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-800 focus:border-transparent placeholder:text-sm"
           type="text"
           placeholder="Enter Reason"
+          v-model="text"
         />
       </div>
       <div>
@@ -18,6 +28,7 @@
           class="w-full transition-all duration-[300ms] ease-out rounded-md appearance-none border border-gray-300 py-0.5 px-2 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-800 focus:border-transparent placeholder:text-sm"
           type="text"
           placeholder="Amount (-ve-expense,+ve-expense)"
+          v-model="amount"
         />
       </div>
 
@@ -26,6 +37,6 @@
       >
         Add Transaction
       </button>
-    </div>
+    </form>
   </div>
 </template>

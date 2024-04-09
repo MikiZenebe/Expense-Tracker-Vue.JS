@@ -15,7 +15,7 @@ const props = defineProps({
 
 <template>
   <div
-    class="flex items-center justify-between w-[250px] px-6 py-2 rounded-md border border-gray-300"
+    class="flex text-[16px] items-center justify-between w-[250px] px-6 py-2 rounded-md border border-gray-300"
   >
     <div>
       <h4 class="font-semibold">Income</h4>

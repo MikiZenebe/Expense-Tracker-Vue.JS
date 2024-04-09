@@ -19,11 +19,13 @@ body {
 }
 
 .minus {
-  border-left-width: 4px;
-  border-color: red;
+  background: linear-gradient(to left top, #ee0e0ebd, #c70808da 70%);
+  color: white;
+  padding: auto 3px;
 }
 
 .plus {
-  border-left-width: 4px;
-  border-color: #23c223;
+  color: white;
+  padding: auto 3px;
+  background: linear-gradient(to left top, #049210bd, #14c750da 70%);
 }

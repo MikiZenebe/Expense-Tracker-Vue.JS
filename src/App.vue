@@ -5,14 +5,18 @@ import IncomeExpenses from "./components/IncomeExpenses.vue";
 import TransactionList from "./components/TransactionList.vue";
 import AddTransaction from "./components/AddTransaction.vue";
 
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 
-const transactions = ref([
-  { id: 1, text: "Flower", amount: -19.99 },
-  { id: 2, text: "Salary", amount: 299.97 },
-  { id: 3, text: "Books", amount: 25.44 },
-  { id: 4, text: "Internet", amount: -119.99 },
-]);
+const transactions = ref([]);
+
+//Like UseEffect
+onMounted(() => {
+  const savedTransaction = JSON.parse(localStorage.getItem("transactions"));
+
+  if (savedTransaction) {
+    transactions.value = savedTransaction;
+  }
+});
 
 //Get the total
 const total = computed(() => {
@@ -40,14 +44,47 @@ const expense = computed(() => {
     }, 0)
     .toFixed(2);
 });
+
+//Add Transaction
+const handleTransactionSubmitted = (transactionData) => {
+  transactions.value.push({
+    id: generateUniqueId(),
+    text: transactionData.text,
+    amount: transactionData.amount,
+  });
+  saveTransactionToLocStorage();
+  alert("Transaction added ✔");
+};
+
+//Generate unique id
+const generateUniqueId = () => {
+  return Math.floor(Math.random() * 1000000);
+};
+
+//Delete Transaction
+const handleDeleted = (id) => {
+  transactions.value = transactions.value.filter(
+    (transaction) => transaction.id !== id
+  );
+  saveTransactionToLocStorage();
+  alert("Transaction deleted 🧺");
+};
+
+//Save to localStorage
+const saveTransactionToLocStorage = () => {
+  localStorage.setItem("transactions", JSON.stringify(transactions.value));
+};
 </script>
 
 <template>
-  <div class="flex flex-col gap-2 card p-12 rounded-lg shadow-2xl h-auto">
+  <div class="flex flex-col gap-2 card p-6 rounded-lg shadow-2xl h-auto">
     <Header />
     <Balance :total="total" />
     <IncomeExpenses :income="+income" :expense="+expense" />
-    <TransactionList :transactions="transactions" />
-    <AddTransaction />
+    <TransactionList
+      :transactions="transactions"
+      @transactionDeleted="handleDeleted"
+    />
+    <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
   </div>
 </template>

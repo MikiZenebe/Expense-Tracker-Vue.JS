@@ -1,3 +1,3 @@
 <template>
-  <h2 class="text-2xl font-bold text-gray-700">Expense Tracker</h2>
+  <h2 class="text-xl font-bold text-gray-700">Expense Tracker</h2>
 </template>
